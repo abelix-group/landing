@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.js": "/static/js/main.13df60e7.chunk.js",
+    "main.js.map": "/static/js/main.13df60e7.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.72561f28.js",
+    "runtime-main.js.map": "/static/js/runtime-main.72561f28.js.map",
+    "static/css/2.c6775b42.chunk.css": "/static/css/2.c6775b42.chunk.css",
+    "static/js/2.56f58a18.chunk.js": "/static/js/2.56f58a18.chunk.js",
+    "static/js/2.56f58a18.chunk.js.map": "/static/js/2.56f58a18.chunk.js.map",
+    "static/js/3.e4a0549d.chunk.js": "/static/js/3.e4a0549d.chunk.js",
+    "static/js/3.e4a0549d.chunk.js.map": "/static/js/3.e4a0549d.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.5a4d55e90e8a9ffec799f458f88f26f1.js": "/precache-manifest.5a4d55e90e8a9ffec799f458f88f26f1.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.c6775b42.chunk.css.map": "/static/css/2.c6775b42.chunk.css.map",
+    "static/media/avatar-3.png": "/static/media/avatar-3.7e3e042d.png",
+    "static/media/avatar-5.png": "/static/media/avatar-5.c8f9977a.png",
+    "static/media/avatar-6.png": "/static/media/avatar-6.9c300344.png",
+    "static/media/avatar-7.png": "/static/media/avatar-7.6a4f6e82.png",
+    "static/media/desert-dark.svg": "/static/media/desert-dark.5b32b51e.svg",
+    "static/media/desert-light.svg": "/static/media/desert-light.5de2149e.svg",
+    "static/media/download_appstore.png": "/static/media/download_appstore.80472854.png",
+    "static/media/download_playstore.png": "/static/media/download_playstore.2fab5ce2.png",
+    "static/media/iphone-main.png": "/static/media/iphone-main.7425d892.png",
+    "static/media/jsui.jpg": "/static/media/jsui.31b33339.jpg",
+    "static/media/kitze.jpg": "/static/media/kitze.566eb12f.jpg",
+    "static/media/sizzy.jpg": "/static/media/sizzy.75f0bde9.jpg",
+    "static/media/twizzle.png": "/static/media/twizzle.917926c3.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.72561f28.js",
+    "static/css/2.c6775b42.chunk.css",
+    "static/js/2.56f58a18.chunk.js",
+    "static/js/main.13df60e7.chunk.js"
+  ]
+}

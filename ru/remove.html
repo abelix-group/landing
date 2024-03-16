@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="theme-color" content="#000000" />
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" />
+    <title>Удаление аккаунта</title>
+    <style type="text/css">
+      * {
+        box-sizing: border-box;
+      }
+
+      body,
+      html {
+        overflow-x: hidden;
+      }
+
+      body {
+        min-height: 100vh;
+        background: linear-gradient(to bottom,#192740,#35465d);
+        padding: 0 32px;
+        color: #ffffff;
+      }
+
+      body,
+      html,
+      * {
+        font-family: 'PT Sans', sans-serif;
+      }
+
+      input:not([type="checkbox"]):not([type="radio"]), textarea {
+        padding: 8px 12px;
+        border-color: #35465d;
+        border-radius: 8px;
+        max-width: 500px;
+        display: block;
+        width: 100%;
+      }
+
+      button {
+        color: #fff;
+        background-color: rgb(68, 123, 186);
+        padding: 0 16px;
+        height: 32px;
+        border-radius: 8px;
+        cursor: pointer;
+        border: 0;
+        outline: 0;
+      }
+      
+
+      button:disabled {
+        cursor: not-allowed;
+
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      .reason-list li {
+        margin-bottom: 12px;
+      }
+
+      #reason-form .form-item {
+        margin-left: 40px;
+      }
+
+      .form-item {
+        margin: 0 0 16px 0;
+      }
+
+      .form-item label {
+        display: inline-block;
+        margin-bottom: 4px;
+      }
+
+      .disabled, .disabled:hover, .disabled:active {
+        color: #000;
+        opacity: 0.5;
+      }
+
+      /* The Modal (background) */
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+      }
+
+      .modal-header {
+        display: flex;
+        align-items: center;
+        margin: 0 0 1em;
+      }
+
+      .modal-title {
+        margin: 0;
+      }
+
+      .modal-icon {
+        font-size: 16px;
+        width: 1em;
+        height: 1em;
+        margin: 0 12px 0 0;
+      }
+
+      /* Modal Content */
+      .modal-content {
+        position: relative;
+        color: #000;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border-radius: 8px;
+        width: 400px;
+        max-width: 95%;
+      }
+
+      .modal-content p {
+        font-size: 14px;
+        color: #555;
+      }
+
+      /* The Close Button */
+      .modal-close-icon {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        color: #aaaaaa;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .modal-close-icon:hover,
+      .modal-close-icon:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .modal-footer {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      #loader {
+        position: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 500;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.5);
+      }
+
+      .spinner {
+        border: 5px solid #f3f3f3;
+        -webkit-animation: spin 1s linear infinite;
+        animation: spin 1s linear infinite;
+        border-top: 5px solid #555;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      @media (max-width: 599px) {
+        body {
+            padding: 0 16px;
+        }
+
+        ul {
+            padding-inline-start: 16px;
+        }
+
+        #reason-form .form-item {
+          margin-left: 0;
+        }
+      }
+
+    </style>
+  </head>
+  <body class="dark animation-running">
+    <div id="root">
+        <h1>Удаление аккаунта</h1>
+
+        <p>
+            Прежде чем продолжить, мы хотели бы выразить благодарность за использование нашего приложения. Если у вас возникли трудности, предложения или просто вы решили завершить пользование, мы готовы помочь.
+        </p>
+        <p>
+            Удаление аккаунта позволяет вам закрыть свой профиль и все связанные с ним данные. Обратите внимание, что эта операция нельзя отменить. Если вы все еще столкнетесь с проблемами, не стесняйтесь связаться с нашей службой поддержки.
+        </p>
+
+        <form id="reason-form" name="reason-form">
+            <p>
+                Пожалуйста, укажите причину удаления вашей страницы
+            </p>
+            <br/>
+
+            <ul class="reason-list">
+                <li><label><input type="radio" name="reason" value="have_another_account" required /> <span>У меня есть другой аккаунт</span></label></li>
+                <li><label><input type="radio" name="reason" value="takes_too_much_time." required /> <span>Abelix отнимает у меня слишком много времени</span></label></li>
+                <li><label><input type="radio" name="reason" value="too_much_inappropriate_content" required /> <span>В Abelix слишком много неприемлемых материалов</span></label></li>
+                <li><label><input type="radio" name="reason" value="concern_about_security_of_my_data" required /> <span>Меня беспокоит безопасность моих данных</span></label></li>
+                <li><label><input type="radio" name="reason" value="custom" required /> <span>Другая причина</span></label></li>
+            </ul>
+
+            <div id="reason-description" class="form-item" style="display: none;">
+                <textarea rows="4" name="reasonDescription" required></textarea>
+            </div>
+            
+            <div class="form-item">
+                <label for="phone-number">Номер телефона:</label>
+                <input id="phone-number" type="tel" name="phoneNumber" placeholder="+7 (000) 000-00-00" required />
+            </div>
+
+            <div class="form-item">
+                <button type="submit">Удалить аккаунт</button>
+            </div>
+        </form>
+      
+    </div>
+
+    <div id="loader" style="display: none;">
+      <div class="spinner"></div>
+    </div>
+
+    <div id="otp-modal" class="modal" style="display: none;">
+      <div class="modal-content">
+        <span class="modal-close-icon modal-close">&times;</span>
+        <div class="modal-header">
+          <h3 class="modal-title">Введите одноразовый пароль</h3>
+        </div>
+        <p>Одноразовый пароль был отправлен на ваш мобильный телефон. 
+          Введите его здесь, чтобы подтвердить свой мобильный телефон.</p>
+        <form id="otp-form" name="otp-form">
+          <div class="form-item">
+            <input id="otp-code" type="text" name="otp" placeholder="Введите..." required maxlength="4" />
+          </div>
+          <div class="form-item">
+            <button type="submit">Отправить</button>
+          </div>
+        </form>
+
+        <p>Не получили код? <a href="#" id="resend-otp">Запросить еще раз <span></span></a></p>
+      </div>
+    </div>
+
+    <div id="success-modal" class="modal" style="display: none;">
+      <div class="modal-content">
+        <span class="modal-close-icon modal-close">&times;</span>
+
+        <div class="modal-header">
+          <span class="modal-icon" style="color: #52c41a">
+            <svg viewBox="64 64 896 896" focusable="false" data-icon="check-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm193.5 301.7l-210.6 292a31.8 31.8 0 01-51.7 0L318.5 484.9c-3.8-5.3 0-12.7 6.5-12.7h46.9c10.2 0 19.9 4.9 25.9 13.3l71.2 98.8 157.2-218c6-8.3 15.6-13.3 25.9-13.3H699c6.5 0 10.3 7.4 6.5 12.7z"></path></svg>
+          </span>
+          <h3 class="modal-title">
+            Успешно удален аккаунт
+          </h3>
+        </div>
+        <p>
+          Уважаемый(ая) пользователь,
+          <br/><br/>
+          Ваш аккаунт успешно удален из системы Abelix. Все связанные с ним данные были безопасно удалены, и вы больше не имеете доступа к нашим сервисам.
+        </p>
+        <div class="modal-footer">
+          <button type="button" class="modal-close">OK</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="error-modal" class="modal" style="display: none;">
+      <div class="modal-content">
+        <span class="modal-close-icon modal-close">&times;</span>
+
+        <div class="modal-header">
+          <span class="modal-icon" style="color: #ff4d4f">
+            <svg fill-rule="evenodd" viewBox="64 64 896 896" focusable="false" data-icon="close-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M512 64c247.4 0 448 200.6 448 448S759.4 960 512 960 64 759.4 64 512 264.6 64 512 64zm127.98 274.82h-.04l-.08.06L512 466.75 384.14 338.88c-.04-.05-.06-.06-.08-.06a.12.12 0 00-.07 0c-.03 0-.05.01-.09.05l-45.02 45.02a.2.2 0 00-.05.09.12.12 0 000 .07v.02a.27.27 0 00.06.06L466.75 512 338.88 639.86c-.05.04-.06.06-.06.08a.12.12 0 000 .07c0 .03.01.05.05.09l45.02 45.02a.2.2 0 00.09.05.12.12 0 00.07 0c.02 0 .04-.01.08-.05L512 557.25l127.86 127.87c.04.04.06.05.08.05a.12.12 0 00.07 0c.03 0 .05-.01.09-.05l45.02-45.02a.2.2 0 00.05-.09.12.12 0 000-.07v-.02a.27.27 0 00-.05-.06L557.25 512l127.87-127.86c.04-.04.05-.06.05-.08a.12.12 0 000-.07c0-.03-.01-.05-.05-.09l-45.02-45.02a.2.2 0 00-.09-.05.12.12 0 00-.07 0z"></path></svg>
+          </span>
+          <h3 class="modal-title">
+            Произошла ошибка
+          </h3>
+        </div>
+        <p>
+          Уважаемый(ая) пользователь,
+          <br/><br/>
+          Произошла ошибка при попытке удаления вашего аккаунта из системы Abelix.
+          <br/>
+          Пожалуйста, попробуйте выполнить удаление аккаунта еще раз позже.
+        </p>
+        <div class="modal-footer">
+          <button type="button" class="modal-close">OK</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/apollo-client@3.5.6/"></script>
+    <script src="https://cdn.jsdelivr.net/npm/graphql-tag@2.12.2/"></script>
+    <script src="https://unpkg.com/imask"></script>
+
+    <script>
+      const client = new ApolloClient({
+        uri: 'http://185.22.65.94/graphql',
+      });
+
+      console.log('client', client)
+
+      const phoneNumberInput = document.getElementById('phone-number');
+      IMask(phoneNumberInput, {
+        mask: '+{7} (000) 000-00-00'
+      });
+
+      const otpCodeInput = document.getElementById('otp-code')
+      IMask(otpCodeInput, {
+        mask: '0000'
+      });
+
+      const loader = document.getElementById('loader');
+      function setLoading(show) {
+        loader.style.display = show ? 'flex' : 'none';
+      }
+
+      const reasonForm = document.getElementById('reason-form')
+      reasonForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const data = formDataToJson(new FormData(reasonForm))
+        post('', data, function() {
+          openModal(document.getElementById('otp-modal'))
+        })
+      })
+
+      const otpForm = document.getElementById('otp-form')
+      otpForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const data = formDataToJson(new FormData(otpForm))
+        post('', data, function() {
+          closeModal(document.getElementById('otp-modal'))
+          openModal(document.getElementById('success-modal'))
+        })
+      })
+
+      const modalCloseBtns = document.querySelectorAll('.modal .modal-close');
+      for (const btn of modalCloseBtns) {
+        btn.addEventListener('click', (e) => {
+          const modal = btn.closest('.modal');
+          closeModal(modal);
+          const form = modal.querySelector('form')
+          if (form) {
+            form.reset()
+          }
+        });
+      }
+      function openModal(modal) {
+        if (modal) {
+          modal.style.display = 'block';
+        }
+      }
+      function closeModal(modal) {
+        if (modal) {
+          modal.style.display = 'none';
+        }
+      }
+
+      const reasons = document.getElementsByName('reason');
+      reasons.forEach((reason) => {
+        reason.addEventListener('input', (e) => {
+          onReasonValueChange(e.target['value'], e.target.nextElementSibling.textContent);
+        })
+      })
+
+      const reasonDescription = document.getElementById('reason-description');
+      function onReasonValueChange(reasonValue, description) {
+        if (reasonValue === 'custom') {
+          reasonDescription.style.display = 'block'
+          reasonDescription.querySelector('textarea').value = ''
+        } else {
+          reasonDescription.style.display = 'none'
+          reasonDescription.querySelector('textarea').value = description
+        }
+      }
+
+      const resendOtp = document.getElementById('resend-otp')
+      resendOtp.addEventListener("click", function(event) {
+        event.preventDefault();
+        if (resendOtp.classList.contains('disabled')) {
+          return
+        }
+
+        resendOtp.classList.add('disabled')
+
+        let seconds = 30;
+        let span = resendOtp.querySelector('span')
+        let timer = setInterval(function() {
+            seconds--;
+            if (seconds <= 0) {
+                clearInterval(timer);
+                resendOtp.classList.remove('disabled')
+                span.textContent = ''
+            } else {
+              span.textContent = '(' + seconds + 'c)';
+            }
+        }, 1000);
+
+        span.textContent = '(' + seconds + 'c)';
+        const data = formDataToJson(new FormData(reasonForm))
+        post('', data, function() {
+        })
+    });
+
+
+      // Convert FormData to JSON object
+      function formDataToJson(formData) {
+        const jsonObject = {};
+        formData.forEach(function(value, key){
+            if(jsonObject.hasOwnProperty(key)) {
+                if(!Array.isArray(jsonObject[key])) {
+                    jsonObject[key] = [jsonObject[key]];
+                }
+                jsonObject[key].push(value);
+            } else {
+                jsonObject[key] = value;
+            }
+        });
+        return jsonObject;
+      }
+
+      function post(url, data, callback) {
+        console.log('data', data)
+        setLoading(true)
+
+        setTimeout(() => {
+          setLoading(false);
+          if (callback) {
+            callback()
+          } 
+        }, 1000)
+        
+        // fetch(url, {
+        //   method: 'POST',
+        //   headers: {
+        //     'Content-Type': 'application/json'
+        //   },
+        //   body: JSON.stringify(data),
+        // })
+        // .then((res) => res.json())
+        // .then((res) => callback(res))
+        // .finally(() => setLoading(false))
+      }
+    </script>
+  </body>
+</html>
